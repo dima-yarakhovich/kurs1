@@ -22,8 +22,14 @@ public class Main {
         System.out.println("Сотрудник с максимальной зарплатой: " + maxSalary());
         System.out.println("Список всех сотрудников со всеми имеющимися по ним данными:" + Arrays.toString(employees));
         System.out.println("Cреднее значение зарплат: " + calculateSumSalary() / employees.length);
+        System.out.println("Список всех сотрудников ФИО:");
+        printFIO();
+    }
 
-
+    public static void printFIO() {
+        for (Employee employee : employees) {
+            System.out.println("Имя = " + employee.getName() + ", Фамилия = " + employee.getSurname() + ", Отчество = " + employee.getMiddleName());
+        }
     }
 
 
@@ -60,5 +66,6 @@ public class Main {
         }
         return oneEmployee;
     }
+
 
 }

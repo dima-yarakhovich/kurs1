@@ -1,5 +1,5 @@
 public class Employee {
-    private static String name;
+    private String name;
     private String surname;
     private String middleName;
     private int salary;
@@ -8,7 +8,7 @@ public class Employee {
     private int idCount = 0;
 
 
-    public Employee(String name, String surname, String middleName, int salary, int depeartment) {
+    public Employee(String surname, String name, String middleName, int salary, int depeartment) {
         this.name = name;
         this.surname = surname;
         this.middleName = middleName;
@@ -49,10 +49,11 @@ public class Employee {
         this.department = department;
     }
 
+
     @Override
     public String toString() {
-        return "\n"+"Имя= " + name + ", Фамилия= " + surname + ", Отчество= " + middleName + ", Зарплата=" + salary +
-                ", Отдел=" + department + ", id=" + id+";";
+        return "\n"+"Имя = " + name + ", Фамилия = " + surname + ", Отчество = " + middleName + ", Зарплата =" + salary +
+                ", Отдел =" + department + ", id =" + id+";";
     }
 
 }
