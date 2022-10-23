@@ -17,7 +17,7 @@ public class Employee {
         this.id = idCount + 1;
     }
 
-    public  String getName() {
+    public String getName() {
         return name;
     }
 
@@ -52,8 +52,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "\n"+"Имя = " + name + ", Фамилия = " + surname + ", Отчество = " + middleName + ", Зарплата =" + salary +
-                ", Отдел =" + department + ", id =" + id+";";
+        return "\n" + "Имя = " + name + ", Фамилия = " + surname + ", Отчество = " + middleName + ", Зарплата =" + salary +
+                ", Отдел =" + department + ", id =" + id + ";";
     }
 
 }
