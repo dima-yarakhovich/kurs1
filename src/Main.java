@@ -1,5 +1,7 @@
 import java.util.Arrays;
 
+import static java.util.Arrays.copyOf;
+
 public class Main {
     private static Employee[] employees = new Employee[10];
 
@@ -21,10 +23,9 @@ public class Main {
         System.out.println("Список всех сотрудников со всеми имеющимися по ним данными:" + Arrays.toString(employees));
         System.out.println("Cреднее значение зарплат: " + calculateSumSalary() / employees.length);
 
-        System.out.println("Список ФИО: ");
-
 
     }
+
 
     public static int calculateSumSalary() {
         int sumSalary = 0;
@@ -59,4 +60,5 @@ public class Main {
         }
         return oneEmployee;
     }
+
 }
