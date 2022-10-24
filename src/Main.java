@@ -21,7 +21,8 @@ public class Main {
         System.out.println("Сотрудник с минимальной зарплатой: " + minSalary());
         System.out.println("Сотрудник с максимальной зарплатой: " + maxSalary());
         System.out.println("Список всех сотрудников со всеми имеющимися по ним данными:" + Arrays.toString(employees));
-        System.out.println("Cреднее значение зарплат: " + calculateSumSalary() / employees.length);
+        //  System.out.println("Cреднее значение зарплат: " + calculateSumSalary() / employees.length);
+        System.out.println("Cреднее значение зарплат: " + averageSalary());
         System.out.println("Список всех сотрудников ФИО:");
         printFIO();
     }
@@ -65,6 +66,18 @@ public class Main {
             }
         }
         return oneEmployee;
+    }
+
+    public static int averageSalary() {
+        int sumSalary = 0;
+        int len = 0;
+        for (Employee employee : employees) {
+            if (employee != null) {
+                sumSalary = sumSalary + employee.getSalary();
+                len++;
+            }
+        }
+        return sumSalary / len;
     }
 
 
