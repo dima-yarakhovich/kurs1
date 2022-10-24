@@ -17,19 +17,31 @@ public class Main {
         employees[8] = new Employee("Василенко", "Геннадий", "Елексеевич", 1600, 1);
         employees[9] = new Employee("Семенко", "Владимир", "Эдуардович", 2600, 2);
 
-        System.out.println("Сумма затрат на зарплаты в месяц равна: " + calculateSumSalary());
-        System.out.println("Сотрудник с минимальной зарплатой: " + minSalary());
-        System.out.println("Сотрудник с максимальной зарплатой: " + maxSalary());
+        System.out.println("Сумма затрат на зарплаты по отделу №" + dep + " в месяц равна: " + calculateSumSalary());
+        System.out.println("Сотрудник с минимальной зарплатой по отделу №" + dep + " " + minSalary());
+        System.out.println("Сотрудник с максимальной зарплатой по отделу №" + dep + " " + maxSalary());
+        System.out.println("Cреднее значение зарплат по отделу №" + dep + " равно: " + averageSalary());
         System.out.println("Список всех сотрудников со всеми имеющимися по ним данными:" + Arrays.toString(employees));
-        //  System.out.println("Cреднее значение зарплат: " + calculateSumSalary() / employees.length);
-        System.out.println("Cреднее значение зарплат: " + averageSalary());
-        System.out.println("Список всех сотрудников ФИО:");
+        System.out.println("Список всех сотрудников отдела №:" + dep);
         printFIO();
+        indekSalary();
+        System.out.println("Список всех сотрудников чья зарплата больше " + newMeaningSalary);
+        maxNewMeaningSalary();
+        System.out.println("Список всех сотрудников чья зарплата меньше " + newMeaningSalary);
+        minNewMeaningSalary();
+
+
     }
+
+    private static int dep = 3;
+    private static int newMeaningSalary = 2900;
+
 
     public static void printFIO() {
         for (Employee employee : employees) {
-            System.out.println("Имя = " + employee.getName() + ", Фамилия = " + employee.getSurname() + ", Отчество = " + employee.getMiddleName());
+            if (employee != null && employee.getDepartment() == dep) {
+                System.out.println("Имя = " + employee.getName() + ", Фамилия = " + employee.getSurname() + ", Отчество = " + employee.getMiddleName());
+            }
         }
     }
 
@@ -37,7 +49,7 @@ public class Main {
     public static int calculateSumSalary() {
         int sumSalary = 0;
         for (Employee employee : employees) {
-            if (employee != null) {
+            if (employee != null && employee.getDepartment() == dep) {
                 sumSalary = sumSalary + employee.getSalary();
             }
         }
@@ -48,7 +60,7 @@ public class Main {
         int min = Integer.MAX_VALUE;
         Employee oneEmployee = null;
         for (Employee employee : employees) {
-            if (employee != null && employee.getSalary() < min) {
+            if (employee != null && employee.getSalary() < min && employee.getDepartment() == dep) {
                 min = employee.getSalary();
                 oneEmployee = employee;
             }
@@ -60,7 +72,7 @@ public class Main {
         int max = Integer.MIN_VALUE;
         Employee oneEmployee = null;
         for (Employee employee : employees) {
-            if (employee != null && employee.getSalary() > max) {
+            if (employee != null && employee.getSalary() > max && employee.getDepartment() == dep) {
                 max = employee.getSalary();
                 oneEmployee = employee;
             }
@@ -72,7 +84,7 @@ public class Main {
         int sumSalary = 0;
         int len = 0;
         for (Employee employee : employees) {
-            if (employee != null) {
+            if (employee != null && employee.getDepartment() == dep) {
                 sumSalary = sumSalary + employee.getSalary();
                 len++;
             }
@@ -81,4 +93,34 @@ public class Main {
     }
 
 
+    public static void indekSalary() {
+        int proc = 10;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getDepartment() == dep) {
+                int oldSalary = employee.getSalary();
+                employee.setSalary(employee.getSalary() + employee.getSalary() / proc);
+                System.out.println("Зарплата сотрудника " + employee.getSurname() + " отдела №" + dep + " после индексации на " + proc + "% изменилась с " + oldSalary + " на " + employee.getSalary());
+            }
+        }
+    }
+
+    public static void maxNewMeaningSalary() {
+        int max = newMeaningSalary;
+        Employee oneEmployee = null;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() >= max) {
+                System.out.println("id =" + employee.getId() + ", Имя = " + employee.getName() + ", Фамилия = " + employee.getSurname() + ", Отчество = " + employee.getMiddleName() + ", зарплата сотрудника " + employee.getSalary());
+            }
+        }
+    }
+
+    public static void minNewMeaningSalary() {
+        int min = newMeaningSalary;
+        Employee oneEmployee = null;
+        for (Employee employee : employees) {
+            if (employee != null && employee.getSalary() < min) {
+                System.out.println("id =" + employee.getId() + ", Имя = " + employee.getName() + ", Фамилия = " + employee.getSurname() + ", Отчество = " + employee.getMiddleName() + ", зарплата сотрудника " + employee.getSalary());
+            }
+        }
+    }
 }
